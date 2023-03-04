@@ -4,7 +4,7 @@ use std::{
 };
 
 fn main() {
-    //let path: String  = get_path_arg();
+    let path: String  = get_path_arg();
 
     let mut inotify = Inotify::init().expect("Error while initializing inotify instance");
     println!("Test");
@@ -12,7 +12,7 @@ fn main() {
     // Watch for modify and close events.
     inotify
         .add_watch(
-            "/data/dump.rdb",
+            &path,
             WatchMask::ALL_EVENTS
         )
         .expect("Failed to add file watch");
